@@ -17,6 +17,9 @@ $(document).ready(function() {
     let i = 9;
     timeBlock.each(function() {
       $('#hour-'+[i]+ ' .description').val(localStorage.getItem('hour-'+[i]));
+      console.log(this);
+      console.log(time);
+      console.log(i);
         if (i === time) {
         $(this).addClass('present')
         }
