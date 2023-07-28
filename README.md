@@ -16,7 +16,7 @@ I created a simple calendar application that allows a user to save events for ea
 ![Alt text](Assets/planz_screenshot.gif)
 
 ## Links
-Deployed Webpage: 
+Deployed Webpage: https://rambriz91.github.io/planz/
 GitHub Repo Page: https://github.com/rambriz91/planz
 
 ## Credits
