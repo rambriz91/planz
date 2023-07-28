@@ -1,25 +1,28 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
-
 var today = dayjs();
+var time = parseInt(dayjs().format('H'));
 
 $(document).ready(function(){
 //Sets current date to the header element in January, 1, 2023 format
-  $('#currentDay').text(today.format('MMMM D, YYYY'));
+  $('#currentDay').text(today.format('[Today is] MMMM D, YYYY'));
+//Event listener that listens for clicks on the save button. Records the ID as as a key in local storage and adds the corresponding text content.
   $('.saveBtn').on('click', function() {
     var timeBlock = $(this).parent().attr('id');
     var blockText = $(this).siblings('textarea').val();
     localStorage.setItem(timeBlock, blockText);
   });
-  $(function () {
-    // TODO: Add a listener for click events on the save button. This code should
-    // use the id in the containing time-block as a key to save the user input in
-    // local storage. HINT: What does `this` reference in the click listener
-    // function? How can DOM traversal be used to get the "hour-x" id of the
-    // time-block containing the button that was clicked? How might the id be
-    // useful when saving the description in local storage?
-    //
+// Grabs schedule from each hour key in local storage and displays it dynamically.
+  function loadPlanz() {
+    let i = 9;
+    $('.time-block').each(function() {
+      $('#hour-'+[i]+ ' .description').val(localStorage.getItem('hour-'+[i]));
+      i++;
+    });
+  }
+
+  loadPlanz();
+    
+  
+  
     // TODO: Add code to apply the past, present, or future class to each time
     // block by comparing the id to the current hour. HINTS: How can the id
     // attribute of each time-block be used to conditionally add or remove the
@@ -30,9 +33,11 @@ $(document).ready(function(){
     // the values of the corresponding textarea elements. HINT: How can the id
     // attribute of each time-block be used to do this?
     //
+
+
   });
 
-})
+
 
 
 
